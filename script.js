@@ -13,6 +13,10 @@ noButton.addEventListener("click", moveButton);
 
 function moveButton() {
   const margin = 12;
+  noButton.style.position = "fixed";
+  noButton.style.width = "auto";
+  noButton.style.zIndex = "10";
+
   const maxX = Math.max(
     window.innerWidth - noButton.offsetWidth - margin * 2,
     0
@@ -22,8 +26,6 @@ function moveButton() {
     0
   );
 
-  noButton.style.position = "fixed";
-  noButton.style.zIndex = "10";
   noButton.style.left = `${margin + Math.random() * maxX}px`;
   noButton.style.top = `${margin + Math.random() * maxY}px`;
 }
