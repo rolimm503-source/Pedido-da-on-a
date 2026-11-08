@@ -1,7 +1,6 @@
 const yesButton = document.querySelector(".yes");
 const noButton = document.getElementById("noButton");
 const hiddenMessage = document.getElementById("hiddenMessage");
-const buttonsContainer = document.querySelector(".buttons");
 
 yesButton.addEventListener("click", () => {
   hiddenMessage.classList.add("show");
@@ -13,16 +12,18 @@ noButton.addEventListener("mouseenter", moveButton);
 noButton.addEventListener("click", moveButton);
 
 function moveButton() {
+  const margin = 12;
   const maxX = Math.max(
-    buttonsContainer.clientWidth - noButton.offsetWidth,
+    window.innerWidth - noButton.offsetWidth - margin * 2,
     0
   );
   const maxY = Math.max(
-    buttonsContainer.clientHeight - noButton.offsetHeight,
+    window.innerHeight - noButton.offsetHeight - margin * 2,
     0
   );
 
-  noButton.style.position = "absolute";
-  noButton.style.left = `${Math.random() * maxX}px`;
-  noButton.style.top = `${Math.random() * maxY}px`;
+  noButton.style.position = "fixed";
+  noButton.style.zIndex = "10";
+  noButton.style.left = `${margin + Math.random() * maxX}px`;
+  noButton.style.top = `${margin + Math.random() * maxY}px`;
 }
